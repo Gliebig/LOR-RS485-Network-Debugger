@@ -1,5 +1,5 @@
 ﻿# LOR-RS485-Network-Debugger
-This is an attempt to build a device to be used in the field to debug the setup of a Light O Rama network by reading the data coming from the computer to ensure the signals are getting to the light controllers. The inspiration came from our troubles with out light show and no way to easily debug the signals. I found this and have contacted the author in hopes we can collaborate on this project https://github.com/Cryptkeeper/lightorama-protocol
+This is an attempt to build a device to be used in the field to debug the setup of a Light O Rama network by reading the data coming from the computer to ensure the signals are getting to the light controllers. The inspiration came from our troubles with our light show https://youtu.be/uwNxAKr67RE and no way to easily debug the signals. I found some work has been started and have contacted the author in hopes we can collaborate on this project https://github.com/Cryptkeeper/lightorama-protocol
 
 My setup uses an Aruduino Mega 2560 Outputting Serial to Monitor using Serial
 There are two devices I'm trying to read the signal from the data line. First is a DSD TECH SH-U12 RS485 to TTL 5V Board with MAX13487 Chip connected to Serial1 and 
