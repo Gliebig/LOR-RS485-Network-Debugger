@@ -7,7 +7,7 @@ Max485 Chip RS-485 Module TTL to RS-485 Module with 120ohm R7 terminating resist
 
 Our hope is to eventually write meaningful data to a screen that can be read by a technician in the field.
 
-Current testing has proven that either board can read the RS485 signal. I'm using a Light o Rama High Speed UART for the initial testing at 57.6k The initial results are just 5 cycles of the heartbeat signal with the sequencer off. 
+Current testing has proven that either board can read the RS485 signal. I'm using a Light o Rama High Speed UART for the initial testing at 57.6k and Enhanced mode enabled. The initial results are just 5 cycles of the heartbeat signal with the sequencer off. 
 
 |millis| Serial1 | Serial3 |
 |---:|---:|---:|
