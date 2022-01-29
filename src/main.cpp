@@ -19,58 +19,65 @@ ELEGOO UNO R3 2.8 Inches TFT Touch Screen shield with SD Card Socket
 
 */
 
-unsigned int byteReceived1;
-unsigned int byteReceived3;
+unsigned long byteReceived1;
+unsigned long byteReceived3;
+unsigned long myTime;
 
  
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+
+  Serial.begin(57600);
   Serial1.begin(57600); // Mega pins 18 (Tx) and 19 (Rx) for SH-U12
   Serial3.begin(57600); // Mega pins 14 (Tx) and 15 (Rx) for Max485
   Serial.println("RS485 LOR Read");
   //pinMode(SSerialTxControl, OUTPUT);
  
   // print Headers
-  Serial.print("Port"); 
+  Serial.print("Time"); 
   Serial.print("\t");         
   
   
-  Serial.print("RAW");  
+  Serial.print("Serial1");  
   Serial.print("\t");         
 
-  Serial.print("DEC");
+  Serial.print("Serial3");
   Serial.print("\t");
 
-  Serial.print("HEX");
-  Serial.print("\t");
+  //Serial.print("HEX");
+  //Serial.print("\t");
 
-  Serial.print("OCT");
-  Serial.print("\t");
+  //Serial.print("OCT");
+  //Serial.print("\t");
 
-  Serial.print("BIN");
+  //Serial.print("BIN");
   Serial.println();       
 }
  
 void loop() {
-
+  myTime = millis();
   // now we read from the RS485 bus
   if (Serial1.available()) {
     byteReceived1 = Serial1.read();
-    byteReceived3 = Serial3.read();
  //.write(byteReceived );
-   Serial.print("Serial1");
+   Serial.print(myTime);
    Serial.print("\t");
-   Serial.write(byteReceived1);
-   Serial.print("\t");
-   Serial.print(byteReceived1, DEC);
-   Serial.print("\t");
+   //Serial.write(byteReceived1);
+   //Serial.print("\t");
+   //Serial.print(byteReceived1, DEC);
+   //Serial.print("\t");
    Serial.print(byteReceived1, HEX);
    Serial.print("\t");
-   Serial.print(byteReceived1, OCT);
+   //Serial.print(byteReceived1, OCT);
+   //Serial.print("\t");
+   //Serial.println(byteReceived1, BIN);
+  }
+  if (Serial3.available()) {
+   byteReceived3 = Serial3.read();
+   Serial.print(byteReceived3, HEX);
    Serial.print("\t");
-   Serial.println(byteReceived1, BIN);
-  
+   /*
+   // Using the 485 Max Board
    Serial.print("Serial3");
    Serial.print("\t");
    Serial.write(byteReceived3);
@@ -82,5 +89,7 @@ void loop() {
    Serial.print(byteReceived3, OCT);
    Serial.print("\t");
    Serial.println(byteReceived3, BIN);
+   */
   }
+  Serial.println();
 }
