@@ -43,9 +43,13 @@ void setup() {
   //Serial3.begin(57600); // Mega pins 14 (Tx) and 15 (Rx) for Max485
   Serial.println("RS485 LOR Read");
    // print Headers
-  Serial.print("Time"); 
+  Serial.print("Flush"); 
   Serial.print("\t");         
-  Serial.print("Serial1");  
+  Serial.print("UID");  
+  Serial.print("\t"); 
+  Serial.print("Action");  
+  Serial.print("\t"); 
+  Serial.print("Channel");  
   Serial.print("\t");         
   Serial.println();       
 }
@@ -57,11 +61,14 @@ void loop() {
   // now we read from the RS485 bus
     if (Serial1.available()) {
       byteReceived1 = Serial1.read();
+      Serial.print(byteReceived1, HEX);
+      Serial.print("\t");
     
        if ((byteReceived1 == 0x00) & (Serial1.peek() != 0x00)) {
           if (PacketStart==1) {
-          Serial.print("0x00");
-          Serial.println(); 
+          //End of Packet
+          //Serial.print("0x00");
+          Serial.println(); //Start New Packet
           }
           PacketStart = 0;
           PacketEnd = 1;
@@ -76,8 +83,8 @@ void loop() {
           PacketStart = 1;
         }
       if (PacketStart == 1) {
-         Serial.print(byteReceived1, HEX);
-         Serial.print("\t");
+         //Serial.print(byteReceived1, HEX);
+         //Serial.print("\t");
       }
     }    
 }
